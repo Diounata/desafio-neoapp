@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -8,6 +8,16 @@ const GlobalStyles = createGlobalStyle`
 
     font-family: 'Roboto', sans-serif;
   }
+
+  button {
+    cursor: pointer;
+    user-select: none;
+  }
 `;
 
-export { GlobalStyles };
+const Container = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+`;
+
+export { GlobalStyles, Container };
