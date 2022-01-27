@@ -18,6 +18,18 @@ const GlobalStyles = createGlobalStyle`
 const Container = styled.div`
   width: 100vw;
   min-height: 100vh;
+
+  main {
+    padding: 2rem;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 1.5em;
+      font-weight: 500;
+
+      padding: 0.4rem 0;
+    }
+  }
 `;
 
 export { GlobalStyles, Container };
