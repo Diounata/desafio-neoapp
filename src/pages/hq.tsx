@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Container } from '../styles/hqPage';
 
-import { BuyButton } from '../components/BuyButton';
+import { Button } from '../components/Button';
 
 import { FaArrowLeft } from 'react-icons/fa';
 
@@ -23,7 +23,7 @@ function HqPage() {
       </header>
 
       <section>
-        <BuyButton>Comprar agora</BuyButton>
+        <Button>Comprar agora</Button>
 
         <h1>Especificações:</h1>
 

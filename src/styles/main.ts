@@ -36,7 +36,12 @@ const Container = styled.div`
     margin-bottom: 3rem;
 
     h1,
-    h2 {
+    h2,
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
       font-size: 1.5em;
       font-weight: 500;
 
