@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const CardContainer = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: space-between;
   gap: 2rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 800px) {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 

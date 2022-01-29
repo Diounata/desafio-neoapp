@@ -13,6 +13,18 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     user-select: none;
   }
+
+  body {
+    ::-webkit-scrollbar {
+      background: #fff;
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #e62429;
+      border-radius: 10px;
+    }
+  }
 `;
 
 const Container = styled.div`
@@ -36,8 +48,8 @@ const Container = styled.div`
     }
   }
 
-  @media (min-width: 600px) {
-    width: calc(100% - 4rem);
+  @media (min-width: 800px) {
+    width: calc(100vw - 6rem);
 
     main {
       width: calc(100% - 4rem);
