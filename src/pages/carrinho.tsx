@@ -75,7 +75,7 @@ function CartPage() {
             </div>
 
             <div>
-              <h3>Desconto de cupom:</h3>
+              <h3>Cupom de desconto:</h3>
               <p>
                 <NegativePriceText>-R$ 4,00</NegativePriceText> (-20%)
               </p>
