@@ -100,4 +100,30 @@ const Nav = styled.nav`
   }
 `;
 
-export { Nav };
+const CartContainer = styled.div`
+  display: grid;
+  place-items: center;
+
+  position: relative;
+
+  span {
+    display: inline;
+
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    width: 1.2em;
+    height: 1.2em;
+
+    border-radius: 50%;
+    background: #e62429;
+
+    text-align: center;
+    color: #fff;
+    font-size: 0.7em;
+    font-weight: 500;
+  }
+`;
+
+export { Nav, CartContainer };

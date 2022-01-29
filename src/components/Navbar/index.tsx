@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Nav } from './styles';
+import { Nav, CartContainer } from './styles';
 
 import { FaHome, FaShoppingCart } from 'react-icons/fa';
 import { MLogo } from '../../img/M';
@@ -21,7 +21,12 @@ export function Navbar() {
 
       <Link href="/carrinho">
         <a title="Ir ao Carrinho">
-          <FaShoppingCart /> <span>Carrinho</span>
+          <CartContainer>
+            <FaShoppingCart />
+            <span>2</span>
+          </CartContainer>
+
+          <span>Carrinho</span>
         </a>
       </Link>
     </Nav>
