@@ -20,8 +20,7 @@ const Card = styled.article`
   gap: 0.5rem;
 
   background: rgba(94, 67, 67, 0.04);
-  box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.08);
 
   padding-top: 1rem;
 

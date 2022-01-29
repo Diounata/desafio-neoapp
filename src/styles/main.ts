@@ -35,6 +35,16 @@ const Container = styled.div`
       font-size: 0.9em;
     }
   }
+
+  @media (min-width: 600px) {
+    width: calc(100% - 4rem);
+
+    main {
+      width: calc(100% - 4rem);
+      margin: 0 8rem;
+      padding: 2rem 0;
+    }
+  }
 `;
 
 export { GlobalStyles, Container };

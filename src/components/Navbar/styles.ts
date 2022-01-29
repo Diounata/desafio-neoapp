@@ -15,6 +15,10 @@ const Nav = styled.nav`
   background: #151515;
 
   a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
     padding: 0.5rem 2rem;
 
     border: none;
@@ -23,6 +27,7 @@ const Nav = styled.nav`
     color: #fff;
 
     font-size: 1.5em;
+    text-decoration: none;
 
     transition: 0.2s;
 
@@ -30,6 +35,67 @@ const Nav = styled.nav`
     &:focus {
       color: #e62429;
       filter: brightness(75%);
+    }
+  }
+
+  span {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    padding: 2rem 0;
+    left: 0;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+
+    width: 100px;
+    height: 100vh;
+
+    transition: font-size 0.01s, width 0.2s;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+
+      svg {
+        &:nth-child(1) {
+          width: 50%;
+        }
+
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      width: 200px;
+      font-size: 0.7em;
+
+      .logo svg {
+        &:nth-child(1) {
+          display: none;
+        }
+
+        &:nth-child(2) {
+          display: inline;
+        }
+      }
+
+      a {
+        width: 100%;
+        padding: 0.7rem 2rem;
+      }
+
+      span {
+        display: inline;
+      }
     }
   }
 `;
