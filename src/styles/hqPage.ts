@@ -36,26 +36,6 @@ const Container = styled.div`
     gap: 1rem;
   }
 
-  button {
-    padding: 0.7rem 2rem;
-    width: 100%;
-
-    border: none;
-    border-radius: 10px;
-
-    background: #e62429;
-    color: #fff;
-
-    font-size: 1.2rem;
-
-    transition: 0.2s;
-
-    &:hover,
-    &:focus {
-      filter: brightness(80%);
-    }
-  }
-
   article {
     display: flex;
     align-items: center;
@@ -73,10 +53,6 @@ const Container = styled.div`
     text-align: justify;
     font-size: 0.9rem;
     line-height: 1.4rem;
-  }
-
-  footer {
-    font-size: 0.9em;
   }
 `;
 

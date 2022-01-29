@@ -12,6 +12,8 @@ function MyApp({ Component, pageProps }) {
 
         <main>
           <Component {...pageProps} />
+
+          <footer>&copy;2022 MARVEL</footer>
         </main>
       </Container>
     </>

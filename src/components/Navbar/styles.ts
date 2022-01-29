@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const Nav = styled.nav`
   position: fixed;
   bottom: 0;
+  z-index: 5;
 
   display: flex;
   align-items: center;

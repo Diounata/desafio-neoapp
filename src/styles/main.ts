@@ -23,11 +23,16 @@ const Container = styled.div`
     padding: 2rem;
     margin-bottom: 3rem;
 
-    h1 {
+    h1,
+    h2 {
       font-size: 1.5em;
       font-weight: 500;
 
       padding: 0.4rem 0;
+    }
+
+    > footer {
+      font-size: 0.9em;
     }
   }
 `;
