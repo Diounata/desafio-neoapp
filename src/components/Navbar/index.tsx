@@ -7,15 +7,15 @@ export function Navbar() {
   return (
     <Nav>
       <Link href="/">
-        <button title="Ir à Loja">
+        <a title="Ir à Loja">
           <FaHome />
-        </button>
+        </a>
       </Link>
 
       <Link href="/carrinho">
-        <button title="Ir ao Carrinho">
+        <a title="Ir ao Carrinho">
           <FaShoppingCart />
-        </button>
+        </a>
       </Link>
     </Nav>
   );

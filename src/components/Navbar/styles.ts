@@ -13,7 +13,7 @@ const Nav = styled.nav`
 
   background: #151515;
 
-  > button {
+  a {
     padding: 0.5rem 2rem;
 
     border: none;
@@ -28,7 +28,7 @@ const Nav = styled.nav`
     &:hover,
     &:focus {
       color: #e62429;
-      filter: brightness(70%);
+      filter: brightness(75%);
     }
   }
 `;
