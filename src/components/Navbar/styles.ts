@@ -17,7 +17,7 @@ const Nav = styled.nav`
   a {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
 
     padding: 0.5rem 2rem;
 
@@ -57,7 +57,7 @@ const Nav = styled.nav`
     width: 100px;
     height: 100vh;
 
-    transition: font-size 0.01s, width 0.2s;
+    transition: font-size 0.01s, width 0.35s;
 
     .logo {
       display: flex;

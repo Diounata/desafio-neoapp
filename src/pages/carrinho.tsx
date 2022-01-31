@@ -88,7 +88,7 @@ function CartPage() {
               </p>
             </div>
 
-            <Button>Comprar</Button>
+            <Button>Finalizar compra</Button>
           </TotalField>
 
           <CouponField>
