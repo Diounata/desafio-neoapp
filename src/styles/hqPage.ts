@@ -34,6 +34,8 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    margin: 1rem 0;
   }
 
   article {
@@ -53,6 +55,29 @@ const Container = styled.div`
     text-align: justify;
     font-size: 0.9rem;
     line-height: 1.4rem;
+  }
+
+  @media (min-width: 800px) {
+    header {
+      flex-direction: row;
+
+      img {
+        max-width: 10rem;
+        margin: 0 !important;
+      }
+    }
+
+    section {
+      width: 40rem;
+    }
+
+    button {
+      width: fit-content;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
   }
 `;
 
