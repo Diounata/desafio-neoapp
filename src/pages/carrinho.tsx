@@ -2,6 +2,8 @@ import { FaShoppingCart, FaTimes } from 'react-icons/fa';
 
 import { Button } from '../components/Button';
 
+import { useComic } from '../contexts/ComicContext';
+
 import {
   Table,
   DeleteButton,
@@ -11,8 +13,11 @@ import {
   CouponField,
   TotalField,
 } from '../styles/carrinhoPage';
+import { formatCurrency } from '../utils/formatCurrency';
 
 function CartPage() {
+  const { cartItems, alterProductAmount } = useComic();
+
   return (
     <div>
       <h1>
@@ -32,39 +37,41 @@ function CartPage() {
         </thead>
 
         <tbody>
-          <tr>
-            <td>
-              <DeleteButton>
-                <FaTimes />
-              </DeleteButton>
-            </td>
-            <td>
-              <img
-                src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg"
-                alt="Product"
-              />
-            </td>
-            <td>Homem de ferro</td>
-            <td>
-              <PriceText>R$ 5,00</PriceText>
-            </td>
-            <td>
-              <QuantityField>
-                <button>-</button>
-                <div>1</div>
-                <button>+</button>
-              </QuantityField>
-            </td>
-            <td>
-              <PriceText>R$ 5,00</PriceText>
-            </td>
-          </tr>
+          {cartItems.map(item => (
+            <tr>
+              <td>
+                <DeleteButton>
+                  <FaTimes />
+                </DeleteButton>
+              </td>
+              <td>
+                <img
+                  src={`${item.thumbnail.path}/portrait_incredible.${item.thumbnail.extension}`}
+                  alt={item.title}
+                />
+              </td>
+              <td>{item.title}</td>
+              <td>
+                <PriceText>{formatCurrency(item.prices[0].price)}</PriceText>
+              </td>
+              <td>
+                <QuantityField>
+                  <button onClick={() => alterProductAmount('decrease', item.id)}>-</button>
+                  <div>{item.amount}</div>
+                  <button onClick={() => alterProductAmount('increase', item.id)}>+</button>
+                </QuantityField>
+              </td>
+              <td>
+                <PriceText>{formatCurrency(item.prices[0].price * item.amount)}</PriceText>
+              </td>
+            </tr>
+          ))}
         </tbody>
 
         <tfoot>
           <TotalField>
             <div>
-              <h3>Quantidade de itens:</h3> <p>1</p>
+              <h3>Quantidade de itens:</h3> <p>{cartItems.length}</p>
             </div>
 
             <div>
