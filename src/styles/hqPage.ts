@@ -18,7 +18,7 @@ const Container = styled.div`
     margin-bottom: 1rem;
 
     img {
-      width: 70%;
+      width: fit-content;
       margin: auto;
 
       border-radius: 5px;
@@ -62,7 +62,6 @@ const Container = styled.div`
       flex-direction: row;
 
       img {
-        max-width: 10rem;
         margin: 0 !important;
       }
     }

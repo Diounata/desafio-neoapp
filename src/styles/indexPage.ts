@@ -30,7 +30,6 @@ const Card = styled.article`
   img {
     align-self: center;
     max-width: 100%;
-    max-height: 250px;
   }
 
   h2,

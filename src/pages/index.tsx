@@ -9,51 +9,75 @@ function Home() {
 
       <CardContainer>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
 
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
         </Card>
 
         <Card>
-          <img src="https://i.annihil.us/u/prod/marvel/i/mg/6/e0/4bb616782e48f/detail.jpg" alt="" />
+          <img
+            src="http://x.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73/portrait_incredible.jpg"
+            alt=""
+          />
           <h2>Homem de ferro</h2>
           <p>R$ 20,00</p>
           <Button>Comprar</Button>
