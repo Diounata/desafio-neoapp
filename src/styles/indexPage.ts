@@ -34,7 +34,14 @@ const Card = styled.article`
 
   h2,
   p {
+    text-align: center;
     font-size: 1.2em !important;
+
+    display: block !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 80%;
   }
 
   &:hover,
