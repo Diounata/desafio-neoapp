@@ -20,7 +20,8 @@ const Table = styled.table`
     margin-top: 2rem;
   }
 
-  tr {
+  thead tr,
+  tbody tr {
     display: grid;
     grid-template-columns: 0.15fr 0.3fr 1fr 0.4fr 0.5fr 0.4fr;
     align-items: center;
@@ -45,7 +46,7 @@ const Table = styled.table`
   }
 
   @media (max-width: 800px) {
-    tr {
+    tbody tr {
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -136,7 +137,7 @@ const TotalField = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  > div {
+  tr {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -154,7 +155,7 @@ const TotalField = styled.div`
   }
 
   @media (max-width: 800px) {
-    > div {
+    tr {
       justify-content: space-between;
       gap: 0.3rem;
     }

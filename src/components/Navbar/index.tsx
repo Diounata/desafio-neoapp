@@ -5,7 +5,11 @@ import { FaHome, FaShoppingCart } from 'react-icons/fa';
 import { MLogo } from '../../img/M';
 import { MarvelLogo } from '../../img/Marvel';
 
+import { useComic } from '../../contexts/ComicContext';
+
 export function Navbar() {
+  const { totalItems } = useComic();
+
   return (
     <Nav>
       <div className="logo">
@@ -23,7 +27,7 @@ export function Navbar() {
         <a title="Ir ao Carrinho">
           <CartContainer>
             <FaShoppingCart />
-            <span>2</span>
+            <span>{totalItems > 9 ? <small>+9</small> : totalItems}</span>
           </CartContainer>
 
           <span>Carrinho</span>

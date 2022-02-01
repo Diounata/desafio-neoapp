@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { ComicProps } from '../types/ComicProps';
 
 const ComicContext = createContext({} as ContextProps);
@@ -13,6 +13,8 @@ interface ChildrenProps {
 
 interface ContextProps {
   cartItems: CartItemProps[];
+  totalPrice: number;
+  totalItems: number;
 
   alterProductAmount(type: 'increase' | 'decrease', id: number): void;
 }
@@ -32,6 +34,8 @@ export function ComicProvider({ children }: ChildrenProps) {
       amount: 1,
     },
   ]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, settotalItems] = useState(0);
 
   function alterProductAmount(type: 'increase' | 'decrease', id: number): void {
     const selectedItem = cartItems.find(item => item.id === id);
@@ -50,7 +54,21 @@ export function ComicProvider({ children }: ChildrenProps) {
     setCartItems(newCartItems);
   }
 
-  return <ComicContext.Provider value={{ cartItems, alterProductAmount }}>{children}</ComicContext.Provider>;
+  useEffect(() => {
+    const totalPrice = cartItems
+      .map(item => item.prices[0].price * item.amount)
+      .reduce((prev, value) => prev + value);
+    const totalItems = cartItems.map(item => item.amount).reduce((prev, value) => prev + value);
+
+    setTotalPrice(totalPrice);
+    settotalItems(totalItems);
+  }, [cartItems]);
+
+  return (
+    <ComicContext.Provider value={{ cartItems, totalPrice, totalItems, alterProductAmount }}>
+      {children}
+    </ComicContext.Provider>
+  );
 }
 
 export function useComic() {

@@ -16,7 +16,7 @@ import {
 import { formatCurrency } from '../utils/formatCurrency';
 
 function CartPage() {
-  const { cartItems, alterProductAmount } = useComic();
+  const { cartItems, totalPrice, totalItems, alterProductAmount } = useComic();
 
   return (
     <div>
@@ -38,7 +38,7 @@ function CartPage() {
 
         <tbody>
           {cartItems.map(item => (
-            <tr>
+            <tr key={item.id}>
               <td>
                 <DeleteButton>
                   <FaTimes />
@@ -70,30 +70,30 @@ function CartPage() {
 
         <tfoot>
           <TotalField>
-            <div>
-              <h3>Quantidade de itens:</h3> <p>{cartItems.length}</p>
-            </div>
+            <tr>
+              <h3>Quantidade de itens:</h3> <p>{totalItems}</p>
+            </tr>
 
-            <div>
+            <tr>
               <h3>Subtotal:</h3>
               <p>
-                <PriceText>R$ 92,00</PriceText>
+                <PriceText>{formatCurrency(totalPrice)}</PriceText>
               </p>
-            </div>
+            </tr>
 
-            <div>
+            <tr>
               <h3>Cupom de desconto:</h3>
               <p>
                 <NegativePriceText>-R$ 4,00</NegativePriceText> (-20%)
               </p>
-            </div>
+            </tr>
 
-            <div>
+            <tr>
               <h3>Total:</h3>
               <p>
                 <PriceText>R$ 90,00</PriceText>
               </p>
-            </div>
+            </tr>
 
             <Button>Finalizar compra</Button>
           </TotalField>
