@@ -43,6 +43,26 @@ const Table = styled.table`
       margin-left: 0;
     }
   }
+
+  @media (max-width: 800px) {
+    tr {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      background: rgba(94, 67, 67, 0.04);
+      box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.08);
+
+      td {
+        margin: 0.3rem auto;
+        font-size: 1.3em;
+      }
+    }
+
+    tfoot {
+      flex-direction: column-reverse;
+    }
+  }
 `;
 
 const DeleteButton = styled.button`
@@ -104,6 +124,11 @@ const CouponField = styled.div`
     font-size: 1em;
     padding: 0.3em 0.8em;
   }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin: 1rem auto;
+  }
 `;
 
 const TotalField = styled.div`
@@ -126,6 +151,17 @@ const TotalField = styled.div`
     padding: 0.3rem 3rem;
 
     font-size: 1.2em;
+  }
+
+  @media (max-width: 800px) {
+    > div {
+      justify-content: space-between;
+      gap: 0.3rem;
+    }
+
+    button {
+      margin: auto;
+    }
   }
 `;
 
