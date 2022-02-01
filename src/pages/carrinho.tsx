@@ -16,7 +16,7 @@ import {
 import { formatCurrency } from '../utils/formatCurrency';
 
 function CartPage() {
-  const { cartItems, totalPrice, totalItems, alterProductAmount } = useComic();
+  const { cartItems, totalPrice, totalItems, alterProductAmount, deleteProduct } = useComic();
 
   return (
     <div>
@@ -40,7 +40,7 @@ function CartPage() {
           {cartItems.map(item => (
             <tr key={item.id}>
               <td>
-                <DeleteButton>
+                <DeleteButton onClick={() => deleteProduct(item.id)}>
                   <FaTimes />
                 </DeleteButton>
               </td>

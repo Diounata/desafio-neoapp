@@ -17,6 +17,7 @@ interface ContextProps {
   totalItems: number;
 
   alterProductAmount(type: 'increase' | 'decrease', id: number): void;
+  deleteProduct(id: number): void;
 }
 
 export function ComicProvider({ children }: ChildrenProps) {
@@ -54,7 +55,18 @@ export function ComicProvider({ children }: ChildrenProps) {
     setCartItems(newCartItems);
   }
 
+  function deleteProduct(id: number): void {
+    const newCart = cartItems.filter(item => item.id !== id);
+
+    setCartItems(newCart);
+  }
+
   useEffect(() => {
+    if (!cartItems.length) {
+      setTotalPrice(0);
+      settotalItems(0);
+      return;
+    }
     const totalPrice = cartItems
       .map(item => item.prices[0].price * item.amount)
       .reduce((prev, value) => prev + value);
@@ -65,7 +77,7 @@ export function ComicProvider({ children }: ChildrenProps) {
   }, [cartItems]);
 
   return (
-    <ComicContext.Provider value={{ cartItems, totalPrice, totalItems, alterProductAmount }}>
+    <ComicContext.Provider value={{ cartItems, totalPrice, totalItems, alterProductAmount, deleteProduct }}>
       {children}
     </ComicContext.Provider>
   );
