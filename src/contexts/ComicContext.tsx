@@ -19,33 +19,24 @@ interface ContextProps {
   cartItems: CartItemProps[];
   totalPrice: number;
   totalItems: number;
+  coupon: string;
+  isUsingCoupon: boolean;
 
   alterProductAmount(type: 'increase' | 'decrease', id: number): void;
   deleteProduct(id: number): void;
   addItemToCart(item: CartItemProps): void;
   getComicById(id: number): ComicProps;
+  addCoupon(coupon: string): void;
 }
 
 export function ComicProvider({ children }: ChildrenProps) {
   const [allComics, setAllComics] = useState<ComicProps[]>();
   const [isLoadingComics, setIsLoadingComics] = useState(true);
-  const [cartItems, setCartItems] = useState<CartItemProps[]>([
-    {
-      id: 82967,
-      title: 'Marvel Previews (2017)',
-      description: '',
-      pageCount: 112,
-
-      prices: [{ type: 'printPrice', price: 1 }],
-      thumbnail: {
-        path: 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available',
-        extension: 'jpg',
-      },
-      amount: 1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, settotalItems] = useState(0);
+  const [coupon, setCoupon] = useState('');
+  const [isUsingCoupon, setIsUsingCoupon] = useState(false);
 
   function alterProductAmount(type: 'increase' | 'decrease', id: number): void {
     const selectedItem = cartItems.find(item => item.id === id);
@@ -90,6 +81,15 @@ export function ComicProvider({ children }: ChildrenProps) {
     if (comic) return comic;
   }
 
+  function addCoupon(coupon: string): void {
+    const couponValue = coupon.toUpperCase();
+
+    if (couponValue === '10%OFF') {
+      setCoupon(couponValue);
+      setIsUsingCoupon(true);
+    }
+  }
+
   useEffect(() => {
     if (!cartItems.length) {
       setTotalPrice(0);
@@ -109,7 +109,9 @@ export function ComicProvider({ children }: ChildrenProps) {
     const baseURL = `https://gateway.marvel.com/v1/public/comics?ts=${process.env.NEXT_PUBLIC_TS}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_HASH}`;
 
     axios.get(baseURL).then(res => {
-      updateAllComics(res.data.data.results);
+      const data: ComicProps[] = res.data.data.results;
+
+      updateAllComics(data);
       setIsLoadingComics(false);
     });
   });
@@ -122,10 +124,13 @@ export function ComicProvider({ children }: ChildrenProps) {
         cartItems,
         totalPrice,
         totalItems,
+        coupon,
+        isUsingCoupon,
         alterProductAmount,
         deleteProduct,
         addItemToCart,
         getComicById,
+        addCoupon,
       }}
     >
       {children}

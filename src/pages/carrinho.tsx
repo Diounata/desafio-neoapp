@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaShoppingCart, FaTimes } from 'react-icons/fa';
 
 import { Button } from '../components/Button';
@@ -16,7 +17,22 @@ import {
 import { formatCurrency } from '../utils/formatCurrency';
 
 function CartPage() {
-  const { cartItems, totalPrice, totalItems, alterProductAmount, deleteProduct } = useComic();
+  const {
+    cartItems,
+    totalPrice,
+    totalItems,
+    coupon,
+    isUsingCoupon,
+    alterProductAmount,
+    deleteProduct,
+    addCoupon,
+  } = useComic();
+
+  const [couponField, setCouponField] = useState('');
+
+  function handleCouponInsertion(): void {
+    addCoupon(couponField);
+  }
 
   return (
     <div>
@@ -84,14 +100,14 @@ function CartPage() {
             <tr>
               <h3>Cupom de desconto:</h3>
               <p>
-                <NegativePriceText>-R$ 4,00</NegativePriceText> (-20%)
+                {coupon} {isUsingCoupon && <NegativePriceText>(-10%)</NegativePriceText>}
               </p>
             </tr>
 
             <tr>
               <h3>Total:</h3>
               <p>
-                <PriceText>R$ 90,00</PriceText>
+                <PriceText>{formatCurrency(isUsingCoupon ? totalPrice * 0.9 : totalPrice)}</PriceText>
               </p>
             </tr>
 
@@ -101,9 +117,14 @@ function CartPage() {
           <CouponField>
             <label htmlFor="couponLabel">Cupom de desconto</label>
 
-            <input type="text" id="couponLabel" maxLength={20} />
+            <input
+              type="text"
+              id="couponLabel"
+              maxLength={20}
+              onChange={e => setCouponField(e.target.value)}
+            />
 
-            <Button>Usar cupom</Button>
+            <Button attributes={{ onClick: handleCouponInsertion }}>Usar cupom</Button>
           </CouponField>
         </tfoot>
       </Table>
