@@ -2,6 +2,7 @@ interface ComicProps {
   id: number;
   title: string;
   description: string;
+  pageCount: number;
   prices: [
     {
       type: string;

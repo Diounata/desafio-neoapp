@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { ComicProps } from '../types/ComicProps';
 
 const ComicContext = createContext({} as ContextProps);
@@ -12,20 +14,27 @@ interface ChildrenProps {
 }
 
 interface ContextProps {
+  allComics: ComicProps[];
+  isLoadingComics: boolean;
   cartItems: CartItemProps[];
   totalPrice: number;
   totalItems: number;
 
   alterProductAmount(type: 'increase' | 'decrease', id: number): void;
   deleteProduct(id: number): void;
+  addItemToCart(item: CartItemProps): void;
+  getComicById(id: number): ComicProps;
 }
 
 export function ComicProvider({ children }: ChildrenProps) {
+  const [allComics, setAllComics] = useState<ComicProps[]>();
+  const [isLoadingComics, setIsLoadingComics] = useState(true);
   const [cartItems, setCartItems] = useState<CartItemProps[]>([
     {
       id: 82967,
       title: 'Marvel Previews (2017)',
       description: '',
+      pageCount: 112,
 
       prices: [{ type: 'printPrice', price: 1 }],
       thumbnail: {
@@ -61,6 +70,26 @@ export function ComicProvider({ children }: ChildrenProps) {
     setCartItems(newCart);
   }
 
+  function updateAllComics(value: ComicProps[]): void {
+    setAllComics(value);
+  }
+
+  function addItemToCart(item: CartItemProps): void {
+    const hasItemIncludedIn = cartItems.some(i => i.id === item.id);
+
+    if (hasItemIncludedIn) return;
+
+    const newCart = [...cartItems, item];
+
+    setCartItems(newCart);
+  }
+
+  function getComicById(id: number): ComicProps {
+    const comic = allComics.find(item => item.id === id);
+
+    if (comic) return comic;
+  }
+
   useEffect(() => {
     if (!cartItems.length) {
       setTotalPrice(0);
@@ -76,8 +105,29 @@ export function ComicProvider({ children }: ChildrenProps) {
     settotalItems(totalItems);
   }, [cartItems]);
 
+  useEffect(() => {
+    const baseURL = `https://gateway.marvel.com/v1/public/comics?ts=${process.env.NEXT_PUBLIC_TS}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_HASH}`;
+
+    axios.get(baseURL).then(res => {
+      updateAllComics(res.data.data.results);
+      setIsLoadingComics(false);
+    });
+  });
+
   return (
-    <ComicContext.Provider value={{ cartItems, totalPrice, totalItems, alterProductAmount, deleteProduct }}>
+    <ComicContext.Provider
+      value={{
+        allComics,
+        isLoadingComics,
+        cartItems,
+        totalPrice,
+        totalItems,
+        alterProductAmount,
+        deleteProduct,
+        addItemToCart,
+        getComicById,
+      }}
+    >
       {children}
     </ComicContext.Provider>
   );

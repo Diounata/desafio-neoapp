@@ -48,6 +48,11 @@ const Container = styled.div`
       padding: 0.4rem 0;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     > footer {
       font-size: 0.9em;
     }
