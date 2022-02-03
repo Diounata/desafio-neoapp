@@ -8,6 +8,7 @@ import { useComic } from '../contexts/ComicContext';
 import { formatCurrency } from '../utils/formatCurrency';
 import { ComicProps } from '../types/ComicProps';
 import { useEffect } from 'react';
+import { Title } from '../utils/Title';
 
 interface Props {
   data: ComicProps[];
@@ -23,6 +24,7 @@ export default function Home({ data }: Props) {
 
   return (
     <div>
+      <Title value="Loja" />
       <h1>Loja de HQ's</h1>
 
       <CardContainer>

@@ -11,6 +11,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useComic } from '../../contexts/ComicContext';
 import { useCart } from '../../contexts/CartContext';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { Title } from '../../utils/Title';
 
 function HqPage() {
   const { getComicById } = useComic();
@@ -34,11 +35,14 @@ function HqPage() {
 
   return (
     <Container>
+      <Title value={comic.title || 'HQ'} />
+
       <Link href="/">
         <a title="Voltar">
           <FaArrowLeft />
         </a>
       </Link>
+
       <header>
         <img
           src={`${comic.thumbnail.path}/portrait_incredible.${comic.thumbnail.extension}`}

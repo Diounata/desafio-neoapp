@@ -14,7 +14,9 @@ import {
   CouponField,
   TotalField,
 } from '../styles/carrinhoPage';
+
 import { formatCurrency } from '../utils/formatCurrency';
+import { Title } from '../utils/Title';
 
 function CartPage() {
   const {
@@ -36,6 +38,7 @@ function CartPage() {
 
   return (
     <div>
+      <Title value={`Carrinho (${totalItems})`} />
       <h1>
         <FaShoppingCart /> Carrinho
       </h1>
