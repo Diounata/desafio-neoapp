@@ -56,80 +56,88 @@ function CartPage() {
         </thead>
 
         <tbody>
-          {cartItems.map(item => (
-            <tr key={item.id}>
-              <td>
-                <DeleteButton onClick={() => deleteProduct(item.id)}>
-                  <FaTimes />
-                </DeleteButton>
-              </td>
-              <td>
-                <img
-                  src={`${item.thumbnail.path}/portrait_incredible.${item.thumbnail.extension}`}
-                  alt={item.title}
-                />
-              </td>
-              <td>{item.title}</td>
-              <td>
-                <PriceText>{formatCurrency(item.prices[0].price)}</PriceText>
-              </td>
-              <td>
-                <QuantityField>
-                  <button onClick={() => alterProductAmount('decrease', item.id)}>-</button>
-                  <div>{item.amount}</div>
-                  <button onClick={() => alterProductAmount('increase', item.id)}>+</button>
-                </QuantityField>
-              </td>
-              <td>
-                <PriceText>{formatCurrency(item.prices[0].price * item.amount)}</PriceText>
-              </td>
+          {cartItems.length === 0 ? (
+            <tr>
+              <td>Carrinho vazio</td>
             </tr>
-          ))}
+          ) : (
+            cartItems.map(item => (
+              <tr key={item.id}>
+                <td>
+                  <DeleteButton onClick={() => deleteProduct(item.id)}>
+                    <FaTimes />
+                  </DeleteButton>
+                </td>
+                <td>
+                  <img
+                    src={`${item.thumbnail.path}/portrait_incredible.${item.thumbnail.extension}`}
+                    alt={item.title}
+                  />
+                </td>
+                <td>{item.title}</td>
+                <td>
+                  <PriceText>{formatCurrency(item.prices[0].price)}</PriceText>
+                </td>
+                <td>
+                  <QuantityField>
+                    <button onClick={() => alterProductAmount('decrease', item.id)}>-</button>
+                    <div>{item.amount}</div>
+                    <button onClick={() => alterProductAmount('increase', item.id)}>+</button>
+                  </QuantityField>
+                </td>
+                <td>
+                  <PriceText>{formatCurrency(item.prices[0].price * item.amount)}</PriceText>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
 
-        <tfoot>
-          <TotalField>
-            <tr>
-              <h3>Quantidade de itens:</h3> <p>{totalItems}</p>
-            </tr>
+        {cartItems.length !== 0 && (
+          <tfoot>
+            <TotalField>
+              <tr>
+                <h3>Quantidade de itens:</h3> <p>{totalItems}</p>
+              </tr>
 
-            <tr>
-              <h3>Subtotal:</h3>
-              <p>
-                <PriceText>{formatCurrency(totalPrice)}</PriceText>
-              </p>
-            </tr>
+              <tr>
+                <h3>Subtotal:</h3>
+                <p>
+                  <PriceText>{formatCurrency(totalPrice)}</PriceText>
+                </p>
+              </tr>
 
-            <tr>
-              <h3>Cupom de desconto:</h3>
-              <p>
-                {coupon} {isUsingCoupon && <NegativePriceText>(-10%)</NegativePriceText>}
-              </p>
-            </tr>
+              <tr>
+                <h3>Cupom de desconto:</h3>
+                <p>
+                  {coupon} {isUsingCoupon && <NegativePriceText>(-10%)</NegativePriceText>}
+                </p>
+              </tr>
 
-            <tr>
-              <h3>Total:</h3>
-              <p>
-                <PriceText>{formatCurrency(isUsingCoupon ? totalPrice * 0.9 : totalPrice)}</PriceText>
-              </p>
-            </tr>
+              <tr>
+                <h3>Total:</h3>
+                <p>
+                  <PriceText>{formatCurrency(isUsingCoupon ? totalPrice * 0.9 : totalPrice)}</PriceText>
+                </p>
+              </tr>
 
-            <Button attributes={{ onClick: () => alert('Compra efetivada!') }}>Finalizar compra</Button>
-          </TotalField>
+              <Button attributes={{ onClick: () => alert('Compra efetivada!') }}>Finalizar compra</Button>
+            </TotalField>
 
-          <CouponField>
-            <label htmlFor="couponLabel">Cupom de desconto</label>
+            <CouponField>
+              <label htmlFor="couponLabel">Cupom de desconto</label>
 
-            <input
-              type="text"
-              id="couponLabel"
-              maxLength={20}
-              onChange={e => setCouponField(e.target.value)}
-            />
+              <input
+                type="text"
+                id="couponLabel"
+                maxLength={20}
+                onChange={e => setCouponField(e.target.value)}
+              />
 
-            <Button attributes={{ onClick: handleCouponInsertion }}>Usar cupom</Button>
-          </CouponField>
-        </tfoot>
+              <Button attributes={{ onClick: handleCouponInsertion }}>Usar cupom</Button>
+            </CouponField>
+          </tfoot>
+        )}
       </Table>
     </div>
   );

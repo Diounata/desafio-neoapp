@@ -62,6 +62,7 @@ const Table = styled.table`
 
     tfoot {
       flex-direction: column-reverse;
+      align-items: center;
     }
   }
 `;
@@ -129,6 +130,13 @@ const CouponField = styled.div`
   @media (max-width: 800px) {
     flex-direction: column;
     margin: 1rem auto;
+
+    width: 100%;
+    font-size: 1.1rem;
+
+    input {
+      width: 100%;
+    }
   }
 `;
 
