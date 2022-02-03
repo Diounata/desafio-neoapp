@@ -3,21 +3,24 @@ import { GlobalStyles, Container } from '../styles/main';
 import { Navbar } from '../components/Navbar';
 
 import { ComicProvider } from '../contexts/ComicContext';
+import { CartProvider } from '../contexts/CartContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ComicProvider>
-      <GlobalStyles />
+      <CartProvider>
+        <GlobalStyles />
 
-      <Container>
-        <Navbar />
+        <Container>
+          <Navbar />
 
-        <main>
-          <Component {...pageProps} />
+          <main>
+            <Component {...pageProps} />
 
-          <footer>&copy;2022 MARVEL</footer>
-        </main>
-      </Container>
+            <footer>&copy;2022 MARVEL</footer>
+          </main>
+        </Container>
+      </CartProvider>
     </ComicProvider>
   );
 }

@@ -5,10 +5,10 @@ import { FaHome, FaShoppingCart } from 'react-icons/fa';
 import { MLogo } from '../../img/M';
 import { MarvelLogo } from '../../img/Marvel';
 
-import { useComic } from '../../contexts/ComicContext';
+import { useCart } from '../../contexts/CartContext';
 
 export function Navbar() {
-  const { totalItems } = useComic();
+  const { totalItems } = useCart();
 
   return (
     <Nav>

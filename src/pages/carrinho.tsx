@@ -3,7 +3,7 @@ import { FaShoppingCart, FaTimes } from 'react-icons/fa';
 
 import { Button } from '../components/Button';
 
-import { useComic } from '../contexts/ComicContext';
+import { useCart } from '../contexts/CartContext';
 
 import {
   Table,
@@ -26,7 +26,7 @@ function CartPage() {
     alterProductAmount,
     deleteProduct,
     addCoupon,
-  } = useComic();
+  } = useCart();
 
   const [couponField, setCouponField] = useState('');
 

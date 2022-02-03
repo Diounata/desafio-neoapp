@@ -9,16 +9,18 @@ import { ComicProps } from '../../types/ComicProps';
 import { FaArrowLeft } from 'react-icons/fa';
 
 import { useComic } from '../../contexts/ComicContext';
+import { useCart } from '../../contexts/CartContext';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 function HqPage() {
-  const { getComicById, addItemToCart } = useComic();
+  const { getComicById } = useComic();
+  const { addProductToCart } = useCart();
   const [comic, setComic] = useState<ComicProps>();
 
   const router = useRouter();
 
   function handleLink() {
-    addItemToCart({ ...comic, amount: 1 });
+    addProductToCart({ ...comic, amount: 1 });
     router.push('/carrinho');
   }
 
