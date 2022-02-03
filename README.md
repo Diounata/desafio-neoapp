@@ -13,7 +13,7 @@
 </p>
 
 <p align='center'>
-<img src="https://github.com/Diounata/desafio-neoapp/blob/main/.github/app-preview.jpeg" width='600px' alt="App preview" />
+<img src="https://github.com/Diounata/desafio-neoapp/blob/master/.github/app-preview.jpeg" width='600px' alt="App preview" />
 </p>
 
 ## :dart: Visão geral
