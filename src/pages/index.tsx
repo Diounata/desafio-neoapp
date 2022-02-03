@@ -1,13 +1,25 @@
 import Link from 'next/link';
+import axios from 'axios';
 import { CardContainer, Card } from '../styles/indexPage';
 
 import { Button } from '../components/Button';
 
 import { useComic } from '../contexts/ComicContext';
 import { formatCurrency } from '../utils/formatCurrency';
+import { ComicProps } from '../types/ComicProps';
+import { useEffect } from 'react';
 
-function Home() {
-  const { allComics, isLoadingComics } = useComic();
+interface Props {
+  data: ComicProps[];
+}
+
+export default function Home({ data }: Props) {
+  const { allComics, isLoadingComics, updateAllComics, updateIsLoadingComic } = useComic();
+
+  useEffect(() => {
+    updateAllComics(data);
+    updateIsLoadingComic(false);
+  });
 
   return (
     <div>
@@ -39,4 +51,16 @@ function Home() {
   );
 }
 
-export default Home;
+export async function getStaticProps() {
+  const baseURL = `https://gateway.marvel.com/v1/public/comics?ts=${process.env.NEXT_PUBLIC_TS}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_HASH}`;
+
+  const data = await axios.get(baseURL).then(res => {
+    const data: ComicProps[] = res.data.data.results;
+
+    return data;
+  });
+
+  return {
+    props: { data },
+  };
+}

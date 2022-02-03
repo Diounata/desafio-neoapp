@@ -27,6 +27,8 @@ interface ContextProps {
   addItemToCart(item: CartItemProps): void;
   getComicById(id: number): ComicProps;
   addCoupon(coupon: string): void;
+  updateAllComics(value: ComicProps[]): void;
+  updateIsLoadingComic(value: boolean): void;
 }
 
 export function ComicProvider({ children }: ChildrenProps) {
@@ -63,6 +65,10 @@ export function ComicProvider({ children }: ChildrenProps) {
 
   function updateAllComics(value: ComicProps[]): void {
     setAllComics(value);
+  }
+
+  function updateIsLoadingComic(value: boolean): void {
+    setIsLoadingComics(value);
   }
 
   function addItemToCart(item: CartItemProps): void {
@@ -105,17 +111,6 @@ export function ComicProvider({ children }: ChildrenProps) {
     settotalItems(totalItems);
   }, [cartItems]);
 
-  useEffect(() => {
-    const baseURL = `https://gateway.marvel.com/v1/public/comics?ts=${process.env.NEXT_PUBLIC_TS}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_HASH}`;
-
-    axios.get(baseURL).then(res => {
-      const data: ComicProps[] = res.data.data.results;
-
-      updateAllComics(data);
-      setIsLoadingComics(false);
-    });
-  });
-
   return (
     <ComicContext.Provider
       value={{
@@ -131,6 +126,8 @@ export function ComicProvider({ children }: ChildrenProps) {
         addItemToCart,
         getComicById,
         addCoupon,
+        updateIsLoadingComic,
+        updateAllComics,
       }}
     >
       {children}
