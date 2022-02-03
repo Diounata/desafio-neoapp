@@ -111,7 +111,7 @@ function CartPage() {
               </p>
             </tr>
 
-            <Button>Finalizar compra</Button>
+            <Button attributes={{ onClick: () => alert('Compra efetivada!') }}>Finalizar compra</Button>
           </TotalField>
 
           <CouponField>
